@@ -1,0 +1,140 @@
+/* @font-face {
+  font-family: "nao latina";
+  src: url(‘./assets/fonts/neo-latina-demon-FFP.ttf’) format(‘truetype’);
+} */
+
+* {
+  box-sizing: border-box;
+  /* font-family: "neo latina"; */
+  margin: 0;
+}
+
+.wrapper {
+  width: 1000px;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 4rem;
+  color: #2d3748;
+  position: absolute;
+  top: 35%;
+}
+
+.second-position{
+  top: 3rem;
+  transition: top 0.5s;
+}
+
+.grid-container {
+  width: 540px;
+  height: 540px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  display: none;
+}
+
+.box {
+  border: 5px solid #cbd5e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cercle {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: solid 5px #718096;
+}
+
+.croix {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 75px;
+  width: 5px;
+  background-color: #718096;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.line-one {
+  transform: rotate(135deg);
+  position: absolute;
+}
+
+.line-two {
+  transform: rotate(225deg);
+  position: absolute;
+}
+
+.restart {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.start {
+  cursor: pointer;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.state-div {
+  text-align: center;
+  /* font-weight: bold; */
+  font-size: 1.5rem;
+}
+
+.active-container {
+  display: grid;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  width: 540px;
+  padding: 1rem 0;
+}
+
+.leave{
+    visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.button-style{
+    cursor: pointer;
+    background-color: #4a5568;
+    color: white;
+    padding: 0.5rem 1rem;
+    clip-path: polygon(
+      0 10%,
+      10% 0,
+      90% 0,
+      100% 10%,
+      100% 90%,
+      90% 100%,
+      10% 100%,
+      0% 90%,
+      0% 10%
+    );
+    height: fit-content;
+}
