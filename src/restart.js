@@ -1,12 +1,11 @@
 import { changeCurrentPlayer } from "./icon.js";
-import { stateDiv } from "./start.js";
+import { stateDiv, boxes } from "./start.js";
 import { changeWinState, changeNullState } from "./checkResult.js";
 
 const restartButton = document.querySelector(".restart");
 
 const restart = () => {
   let icons = document.querySelectorAll(".icon");
-  let boxes = document.querySelectorAll(".box");
 
   // bug si je déplace vers le bas
   changeCurrentPlayer("croix");

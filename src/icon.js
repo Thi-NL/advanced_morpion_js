@@ -1,8 +1,9 @@
 import { stateDiv } from "./start";
+import { nullState, winState, checkResult } from "./checkResult.js";
 
 let currentPlayer = "croix";
 
-const changeCurrentPlayer = (newPlayer) => currentPlayer = newPlayer;
+const changeCurrentPlayer = (newPlayer) => (currentPlayer = newPlayer);
 
 const newIcon = (box) => {
   const circle = document.createElement("div");
@@ -10,13 +11,14 @@ const newIcon = (box) => {
   const lineOne = document.createElement("div");
   const lineTwo = document.createElement("div");
 
-  if (currentPlayer == "croix") {
+  if (currentPlayer == "croix" && !nullState && !winState) {
     circle.className = "cercle icon";
     box.setAttribute("data-icon", "cercle");
     box.appendChild(circle);
     currentPlayer = "cercle";
     stateDiv.innerHTML = "- Au tour des croix -";
-  } else {
+    checkResult(box);
+  } else if (currentPlayer == "cercle" && !nullState && !winState) {
     lineOne.className = "line line-one";
     lineTwo.className = "line line-two";
     cross.appendChild(lineOne);
@@ -26,7 +28,8 @@ const newIcon = (box) => {
     box.appendChild(cross);
     currentPlayer = "croix";
     stateDiv.innerHTML = "- Au tour des cercles -";
+    checkResult(box);
   }
 };
 
-export {stateDiv, changeCurrentPlayer, newIcon, currentPlayer };
+export { stateDiv, changeCurrentPlayer, newIcon, currentPlayer };

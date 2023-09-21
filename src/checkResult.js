@@ -1,12 +1,16 @@
+import  { roundNumber } from './start';
+
 let nullState = false;
 let winState = false;
 let userIcon;
 let count = 0;
 let winTab;
+let circleWinTab = [];
+let crossWinTab = [];
 
-const changeNullState = (newNullState) => nullState = newNullState;
-const changeWinState= (newWinState) => winState = newWinState;
-const changeCount = (newCount) => count = newCount;
+const changeNullState = (newNullState) => (nullState = newNullState);
+const changeWinState = (newWinState) => (winState = newWinState);
+const changeCount = (newCount) => (count = newCount);
 
 const combinations = [
   [1, 2, 3],
@@ -32,7 +36,7 @@ const checkResult = (box) => {
       }
     }
   });
-
+  
   count += 1;
   count === 9 && !winState ? (nullState = true) : null;
 };
@@ -41,4 +45,24 @@ const emptyWinTab = () => {
   combinations.forEach((combination) => (combination.length = 3));
 };
 
-export {checkResult, emptyWinTab, nullState, winState, userIcon, count, combinations, changeCount, changeNullState, changeWinState}
+const checkWinner = () => {
+  winState && userIcon === "cercle" ? circleWinTab.push(userIcon) : null;
+  winState && userIcon === "croix" ? circleWinTab.push(userIcon) : null;
+
+  circleWinTab.length === roundNumber ? console.log(`Les ${userIcon} gagne la partie`) : null;
+  crossWinTab.length === roundNumber ? console.log(`Les ${userIcon} gagne la partie`) : null;
+};
+
+export {
+  checkResult,
+  emptyWinTab,
+  nullState,
+  winState,
+  userIcon,
+  count,
+  combinations,
+  changeCount,
+  changeNullState,
+  changeWinState,
+  checkWinner,
+};

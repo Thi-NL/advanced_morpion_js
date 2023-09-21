@@ -1,11 +1,27 @@
-import { restartButton } from './restart.js';
-import { nullState, winState, changeCount, emptyWinTab, checkResult, userIcon } from './checkResult.js';
-import { stateDiv, newIcon } from './icon.js';
+import { restartButton } from "./restart.js";
+import {
+  nullState,
+  winState,
+  changeCount,
+  emptyWinTab,
+  userIcon,
+  checkWinner,
+} from "./checkResult.js";
+import { stateDiv, newIcon } from "./icon.js";
+import { computerMoves } from "./computer.js";
+import { againstComputer, againstPlayer } from "./start.js";
 
 const gameState = (box) => {
-  if (!box.dataset.icon && !nullState && !winState) {
+  if (againstComputer && !box.dataset.icon && !nullState && !winState) {
     newIcon(box);
-    checkResult(box);
+    window.setTimeout(() => {
+      computerMoves(box);
+    }, 250);
+  }
+
+  if (againstPlayer && !box.dataset.icon && !nullState && !winState){
+    newIcon(box);
+    checkWinner();
   }
 
   if ((winState || nullState) && !restartButton.classList.contains("visible")) {
