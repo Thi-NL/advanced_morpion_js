@@ -17,6 +17,7 @@ const gameState = (box) => {
     window.setTimeout(() => {
       computerMoves(box);
     }, 250);
+    checkWinner();
   }
 
   if (againstPlayer && !box.dataset.icon && !nullState && !winState){

@@ -1,4 +1,7 @@
 import  { roundNumber } from './start';
+const winModalContainer = document.querySelector('.win-modal-container');
+const winModalText = document.querySelector('.win-modal-text');
+const winModalButton = document.querySelector('.win-modal-button');
 
 let nullState = false;
 let winState = false;
@@ -47,10 +50,18 @@ const emptyWinTab = () => {
 
 const checkWinner = () => {
   winState && userIcon === "cercle" ? circleWinTab.push(userIcon) : null;
-  winState && userIcon === "croix" ? circleWinTab.push(userIcon) : null;
+  winState && userIcon === "croix" ? crossWinTab.push(userIcon) : null;
 
-  circleWinTab.length === roundNumber ? console.log(`Les ${userIcon} gagne la partie`) : null;
-  crossWinTab.length === roundNumber ? console.log(`Les ${userIcon} gagne la partie`) : null;
+  winModalButton.addEventListener('click', () => location.reload());
+
+  if (circleWinTab.length === roundNumber){
+    winModalContainer.classList.toggle('flex-active');
+    winModalText.innerHTML = `Les ${userIcon} gagnent la partie`;
+  }
+  if (crossWinTab.length === roundNumber){
+    winModalContainer.classList.toggle('flex-active');
+    winModalText.innerHTML = `Les ${userIcon} gagnent la partie`;
+  }
 };
 
 export {
@@ -65,4 +76,6 @@ export {
   changeNullState,
   changeWinState,
   checkWinner,
+  circleWinTab,
+  crossWinTab,
 };

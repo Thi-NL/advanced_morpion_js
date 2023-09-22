@@ -1,4 +1,5 @@
 import { gameState } from "./gameState";
+import { circleWinTab, crossWinTab } from "./checkResult";
 
 const gridContainer = document.querySelector(".grid-container");
 const startButton = document.querySelector(".start");
@@ -15,6 +16,8 @@ const lessButton = document.querySelector(".less");
 const boxes = document.querySelectorAll(".box");
 const circleScoreDiv = document.querySelector(".circle-score-div");
 const crossScoreDiv = document.querySelector(".cross-score-div");
+const crossScore = document.querySelector(".cross-score");
+const circleScore = document.querySelector(".circle-score");
 let gameStatus = false;
 let againstComputer = true;
 let againstPlayer = false;
@@ -73,21 +76,37 @@ const start = () => {
     const cross = document.createElement("div");
     const lineOne = document.createElement("div");
     const lineTwo = document.createElement("div");
-  
-    circle.className = "cercle icon little-icon";
+
+    circle.className = "cercle little-icon little-circle";
     circleScoreDiv.appendChild(circle);
-  
+
     lineOne.className = "line line-one little-line";
     lineTwo.className = "line line-two little-line";
     cross.appendChild(lineOne);
     cross.appendChild(lineTwo);
-    cross.className = "croix icon little-icon";
+    cross.className = "croix little-icon little-cross";
     crossScoreDiv.appendChild(cross);
   }
 
+  let littleCircles = document.querySelectorAll(".little-circle");
+  let littleCrosses = document.querySelectorAll(".little-cross");
+  
   boxes.forEach((box) => {
     box.addEventListener("click", () => {
       gameState(box);
+      
+      circleScore.innerHTML = circleWinTab.length;
+      crossScore.innerHTML = crossWinTab.length;
+      
+      for (let i = 0 ; i < circleWinTab.length ; i++) {
+        littleCircles[i].classList.add("round-circle-color");
+      }
+
+      for (let i = 0 ; i < crossWinTab.length ; i++) {
+        for (const child of littleCrosses[i].children){
+          child.classList.add("round-cross-color");
+        }
+      }
     });
   });
 };
