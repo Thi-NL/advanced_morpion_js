@@ -19,13 +19,11 @@ const newIcon = (box) => {
     stateDiv.innerHTML = "- Au tour des croix -";
     checkResult(box);
   } else if (currentPlayer == "cercle" && !nullState && !winState) {
-    lineOne.className = "line line-one";
-    lineTwo.className = "line line-two";
-    cross.appendChild(lineOne);
-    cross.appendChild(lineTwo);
-    cross.className = "croix icon";
+    lineOne.className = "line line-one icon";
+    lineTwo.className = "line line-two icon";
+    box.appendChild(lineOne);
+    box.appendChild(lineTwo);
     box.setAttribute("data-icon", "croix");
-    box.appendChild(cross);
     currentPlayer = "croix";
     stateDiv.innerHTML = "- Au tour des cercles -";
     checkResult(box);

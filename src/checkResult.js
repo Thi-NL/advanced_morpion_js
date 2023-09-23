@@ -10,6 +10,7 @@ let count = 0;
 let winTab;
 let circleWinTab = [];
 let crossWinTab = [];
+let winCombination;
 
 const changeNullState = (newNullState) => (nullState = newNullState);
 const changeWinState = (newWinState) => (winState = newWinState);
@@ -36,6 +37,7 @@ const checkResult = (box) => {
       winTab = combination.filter((element) => element === userIcon);
       if (winTab.length === 3) {
         winState = true;
+        winCombination = combination;
       }
     }
   });
@@ -78,4 +80,5 @@ export {
   checkWinner,
   circleWinTab,
   crossWinTab,
+  winCombination,
 };

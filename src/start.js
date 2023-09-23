@@ -1,7 +1,7 @@
 import { gameState } from "./gameState";
 import { circleWinTab, crossWinTab } from "./checkResult";
 
-const gridContainer = document.querySelector(".grid-container");
+const gameDiv = document.querySelector(".game-div");
 const startButton = document.querySelector(".start");
 const gameBar = document.querySelector(".game-bar");
 const quitButton = document.querySelector(".leave");
@@ -64,7 +64,7 @@ quitButton.addEventListener("click", () => location.reload());
 
 const start = () => {
   gameStatus = true;
-  gridContainer.classList.toggle("active-container");
+  gameDiv.classList.toggle("flex-active");
   startButton.classList.toggle("active");
   gameBar.classList.toggle("flex-active");
   optionButtonDiv.classList.toggle("flex-active");
@@ -77,7 +77,7 @@ const start = () => {
     const lineOne = document.createElement("div");
     const lineTwo = document.createElement("div");
 
-    circle.className = "cercle little-icon little-circle";
+    circle.className = "little-circle";
     circleScoreDiv.appendChild(circle);
 
     lineOne.className = "line line-one little-line";
