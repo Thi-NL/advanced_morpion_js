@@ -8,8 +8,7 @@ const restart = () => {
   let icons = document.querySelectorAll(".icon");
 
   // bug si je déplace vers le bas
-  changeCurrentPlayer("croix");
-  stateDiv.innerHTML = "- Au tour des cercles -";
+  stateDiv.innerHTML = "- Au tour des croix -";
   restartButton.classList.toggle("visible");
   changeWinState(false);
   changeNullState(false);
