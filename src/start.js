@@ -24,7 +24,7 @@ let againstPlayer = false;
 let roundNumber = 1;
 
 plusButton.addEventListener("click", () => {
-  if (roundNumber < 10) {
+  if (roundNumber < 8) {
     roundNumber += 1;
     roundNumberInput.value = roundNumber.toString();
   }
@@ -72,40 +72,37 @@ const start = () => {
   stateDiv.innerHTML = "- Au tour des cercles -";
 
   for (let i = 1; i <= roundNumber; i++) {
+    
+    const circleContainer = document.createElement("div");
+    circleContainer.className = "circle-container little-div";
     const circle = document.createElement("div");
-    const cross = document.createElement("div");
-    const lineOne = document.createElement("div");
-    const lineTwo = document.createElement("div");
-
     circle.className = "little-circle";
-    circleScoreDiv.appendChild(circle);
 
-    lineOne.className = "line line-one little-line";
-    lineTwo.className = "line line-two little-line";
-    cross.appendChild(lineOne);
-    cross.appendChild(lineTwo);
-    cross.className = "croix little-icon little-cross";
-    crossScoreDiv.appendChild(cross);
+    circleContainer.appendChild(circle);
+    circleScoreDiv.appendChild(circleContainer);
+    
+    const crossContainer = document.createElement("div");
+    crossContainer.className = "cross-container little-div";
+    const cross = document.createElement("i");
+    cross.className = "fa-solid fa-xmark";
+
+    crossContainer.appendChild(cross);
+    crossScoreDiv.appendChild(crossContainer);
   }
 
   let littleCircles = document.querySelectorAll(".little-circle");
-  let littleCrosses = document.querySelectorAll(".little-cross");
-  
+  let littleCrosses = document.querySelectorAll(".fa-xmark");
+
   boxes.forEach((box) => {
     box.addEventListener("click", () => {
       gameState(box);
-      
-      circleScore.innerHTML = circleWinTab.length;
-      crossScore.innerHTML = crossWinTab.length;
-      
-      for (let i = 0 ; i < circleWinTab.length ; i++) {
+
+      for (let i = 0; i < circleWinTab.length; i++) {
         littleCircles[i].classList.add("round-circle-color");
       }
 
-      for (let i = 0 ; i < crossWinTab.length ; i++) {
-        for (const child of littleCrosses[i].children){
-          child.classList.add("round-cross-color");
-        }
+      for (let i = 0; i < crossWinTab.length; i++) {
+        littleCrosses[i].classList.add("round-cross-color");
       }
     });
   });

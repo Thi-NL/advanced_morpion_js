@@ -7,7 +7,6 @@ const changeCurrentPlayer = (newPlayer) => (currentPlayer = newPlayer);
 
 const newIcon = (box) => {
   const circle = document.createElement("div");
-  const cross = document.createElement("div");
   const lineOne = document.createElement("div");
   const lineTwo = document.createElement("div");
 

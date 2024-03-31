@@ -16,7 +16,7 @@ const gameState = (box) => {
   if (againstComputer && !box.dataset.icon && !nullState && !winState) {
     newIcon(box);
     window.setTimeout(() => {
-      computerMoves(box);
+      computerMoves();
     }, 250);
     checkWinner();
     showCombinationWin();
@@ -38,4 +38,4 @@ const gameState = (box) => {
   }
 };
 
-export { gameState };
+export { gameState, againstComputer };
